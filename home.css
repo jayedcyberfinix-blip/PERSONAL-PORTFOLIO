@@ -1,0 +1,43 @@
+.home{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 2.5rem;
+    width: 90%;
+    max-width: 700px;
+    margin: 2rem auto;
+}
+.img-container{
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.img-container::before,
+.img-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: conic-gradient(
+        transparent,
+        transparent,
+        transparent,
+        var(--green)
+    );
+    animation: revolve 4s linear infinite;
+}
+.img-container::after {
+    animation-delay: 2s;
+}
+@keyframes revolve {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+         transform: rotate(360deg);
+    }
+}
