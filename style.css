@@ -1,151 +1,248 @@
+
+/* Google Fonts থেকে Inter ফন্ট নিয়ে আসা হচ্ছে */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+
+/* ওয়েবসাইটের বিভিন্ন রঙের জন্য Custom Variables তৈরি */
 :root{
-    --primary: #030a16;
-    --secondary: #323946;
-    --disabled: #fff3;
-    --green:#7cf03d;
-    --white: #fff;
+    --primary: #030a16;    /* ওয়েবসাইটের মূল Background Color */
+    --secondary: #323946;  /* Secondary Color */
+    --disabled: #fff3;     /* Disabled Color */
+    --green:#7cf03d;       /* Green Color */
+    --white: #fff;         /* White Color */
 }
+
+
+/* সব HTML Element-এর Default Margin ও Padding সরানো */
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
+    box-sizing: border-box; /* Width ও Height হিসাব সহজ করে */
+    font-family: "Inter", sans-serif; /* পুরো ওয়েবসাইটে Inter Font */
 }
+
+
+/* HTML ও Body-এর সাধারণ ডিজাইন */
 body , html{
-    background: var(--primary);
-    color: var(--white);
-    min-height: 100dvh;
-    overflow-x: hidden;
-    transition: all .03s ease;
+    background: var(--primary); /* Background Color */
+    color: var(--white);        /* লেখার রং সাদা */
+    min-height: 100dvh;         /* কমপক্ষে পুরো Screen Height */
+    overflow-x: hidden;         /* Horizontal Scroll বন্ধ */
+    transition: all .03s ease; /* পরিবর্তনে Animation */
 }
+
+
+/* Menu Open থাকলে Body Scroll বন্ধ রাখা */
 body.no-scroll {
     height: 100dvh;
     overflow: hidden;
 }
 
+
+/* মূল Container-এর ডিজাইন */
 .main-container{
-    max-width: 700px;
-    padding: 1rem;
-    margin: 0 auto;
-   
-} 
-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    margin: 1rem 0;
+    max-width: 700px;  /* সর্বোচ্চ Width */
+    padding: 1rem;     /* চারপাশে ফাঁকা জায়গা */
+    margin: 0 auto;    /* Container মাঝখানে রাখা */
 }
+
+
+/* Header-এর Layout তৈরি */
+header{
+    display: flex;                /* Flexbox চালু */
+    align-items: center;           /* Vertically মাঝখানে */
+    justify-content: space-between;/* দুই পাশে Element রাখা */
+    position: relative;            /* Position Reference */
+    margin: 1rem 0;                /* উপরে ও নিচে Margin */
+}
+
+
+/* Logo ও Website Name একসাথে রাখা */
 .brand-info{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 10px; /* Logo ও Text-এর মাঝের দূরত্ব */
 }
+
+
+/* Logo Image-এর ডিজাইন */
 .brand-info img{
     width: 70px;
     height: 70px;
-    border-radius: 50%;
+    border-radius: 50%; /* Image গোল করা */
 }
+
+
+/* Website Name-এর ডিজাইন */
 .brand-info h2{
-font-size: 1.7rem;
-font-weight: 800;
+    font-size: 1.7rem;
+    font-weight: 800; /* লেখাকে Bold করা */
 }
+
+
+/* Menu Checkbox লুকিয়ে রাখা */
 #menu-toggle {
     display: none;
 }
+
+
+/* Menu Icon-এর ডিজাইন */
 .menu-icon{
     font-size: 30px;
     font-weight: 800;
     color: #fff;
-    cursor: pointer;
+    cursor: pointer; /* Mouse নিলে Pointer দেখাবে */
 }
+
+
+/* Menu Overlay-এর প্রাথমিক অবস্থা */
 #overlay {
-   display: none;
-   opacity: 0; 
-   pointer-events: none;
-   z-index: 1000;
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1000; /* অন্য Element-এর উপরে রাখা */
 }
+
+
+/* Navigation Menu-এর ডিজাইন */
 nav{
     display: flex;
-    flex-direction: column;
-    gap: 1.7rem;
+    flex-direction: column; /* Menu নিচে নিচে সাজানো */
+    gap: 1.7rem;            /* Menu Link-এর দূরত্ব */
     position: absolute;
     left: 0;
     right: 0;
     margin: 2rem 0;
     z-index: 1000;
-    transform: translateX(150%);
-    transition: all .4s ease;
 
+    transform: translateX(150%); /* Menu ডান পাশে সরিয়ে রাখা */
+    transition: all .4s ease;    /* Menu Animation */
 }
+
+
+/* Checkbox Checked হলে Navigation Menu দেখানো */
 #menu-toggle:checked ~ nav {
-    transform: translateX(0%);
+    transform: translateX(0%); /* Menu আগের জায়গায় ফিরবে */
 }
+
+
+/* Navigation-এর প্রতিটি Link-এর ডিজাইন */
 nav a{
-text-align: center;
-padding: 0.8rem;
-font-size: 1.4rem;
-border: 5px solid var(--secondary);
-border-radius: 10px;
-text-decoration: none;
-color: var(--white);
-transform: translateX(150%);
-transition: all .4s ease;
+    text-align: center;
+    padding: 0.8rem;
+    font-size: 1.4rem;
+    border: 5px solid var(--secondary);
+    border-radius: 10px;
+    text-decoration: none; /* Underline সরানো */
+    color: var(--white);
+
+    transform: translateX(150%); /* Link ডান পাশে লুকানো */
+    transition: all .4s ease;
 }
+
+
+/* Menu Open হলে Link গুলো দেখানো */
 #menu-toggle:checked ~ nav a {
     opacity: 1;
     transform: translateX(0%);
-    transition-delay: calc(var(--i)*0.2s);
- }
- 
-    @media screen and (width>=1024px) {
-        .main-container {
-            max-width: 950px;
-        }
-        header{
-            position: static;
-        }
-        .brand-info{
-            gap:20px;
-        }
-        .brand-info img{
-            width: 90px;
-            height: 90px;
-        }
-        .brand-info h2{
-        font-size: 2.5rem;
-      
-          }
-          #menu-toggle {
-            pointer-events: none;
-          }
-          .menu-icon{
-            display: none;
-          }
-          nav{
-            display: flex;
-            flex-direction: row;
-            gap: 1.5rem;
-            position: static;
-            transform: translateX(0%);
-          }
-        nav a{
 
+    /* প্রতিটি Link আলাদা সময়ে Animation হবে */
+    transition-delay: calc(var(--i)*0.2s);
+}
+
+
+/* 1024px বা তার বেশি Screen-এর জন্য Desktop Design */
+@media screen and (width>=1024px) {
+
+    .main-container {
+        max-width: 950px;
+    }
+
+    header{
+        position: static;
+    }
+
+    .brand-info{
+        gap:20px;
+    }
+
+    .brand-info img{
+        width: 90px;
+        height: 90px;
+    }
+
+    .brand-info h2{
+        font-size: 2.5rem;
+    }
+
+    /* Desktop-এ Menu Checkbox-এর Click বন্ধ */
+    #menu-toggle {
+        pointer-events: none;
+    }
+
+    /* Desktop-এ Hamburger Icon লুকানো */
+    .menu-icon{
+        display: none;
+    }
+
+    /* Desktop-এ Navigation পাশাপাশি দেখানো */
+    nav{
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        position: static;
+        transform: translateX(0%);
+    }
+
+    /* Desktop Navigation Link-এর ডিজাইন */
+    nav a{
         padding: 0;
         font-size: 1.5rem;
         border: none;
         opacity: 1;
         transform: translateX(0%);
-
-           }
-        nav a:hover{
-            color: var(--green);
-        }   
     }
-    
- 
+
+    /* Mouse Hover করলে Link-এর রং পরিবর্তন */
+    nav a:hover{
+        color: var(--green);
+    }
+}
+
+
+/* 1250px বা তার বেশি বড় Screen-এর জন্য Design */
+@media screen and (width>=1250px) {
+
+    .main-container {
+        max-width: 1200px;
+    }
+
+    .brand-info{
+        gap: 35px;
+    }
+
+    .brand-info img{
+        width: 100px;
+        height: 100px;
+    }
+
+    .brand-info h2{
+        font-size: 3rem;
+    }
+
+    /* Navigation Link-এর মাঝের দূরত্ব বাড়ানো */
+    nav{
+        gap: 2.5rem;
+    }
+
+    /* Navigation Font বড় করা */
+    nav a{
+        font-size: 2rem;
+    }
+}
+
+
+/* Checkbox Checked হলে Overlay দেখানো */
 #menu-toggle:checked ~ #overlay{
     display: block;
     position: fixed;
